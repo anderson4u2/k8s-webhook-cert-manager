@@ -1,6 +1,6 @@
-DOCKER_IMAGE_NAME ?= newrelic/k8s-webhook-cert-manager
-DOCKER_IMAGE_TAG ?= latest
-KUBECTL_VERSION ?= v1.13.0
+DOCKER_IMAGE_NAME ?= anderson4u2/k8s-webhook-cert-manager
+DOCKER_IMAGE_TAG ?= 0.0.1
+KUBECTL_VERSION ?= v1.18.12
 
 
 .PHONY: all
@@ -16,6 +16,10 @@ build-container:
 .PHONY: build-container-e2e
 build-container-e2e:
 	docker build --build-arg KUBECTL_VERSION=$(KUBECTL_VERSION) -t $(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAG) . 
+
+.PHONY: push-container
+push-container:
+	docker push $(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAG) 
 
 .PHONY: check-shellcheck
 check-shellcheck:
