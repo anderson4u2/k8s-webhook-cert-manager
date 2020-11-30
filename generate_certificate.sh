@@ -127,19 +127,19 @@ spec:
   - server auth
 EOF
 
-# Not working in k8s 1.17+
-# set +e
-# # verify CSR has been created
-# while true; do
-#   if kubectl get csr "${csrName}"; then
-#       break
-#   fi
-# done
+set +e
+# verify CSR has been created
+while true; do
+  if kubectl get csr "${csrName}"; then
+      break
+  fi
+done
 
 # set -e
 
+# Not working in k8s 1.17+, will approve outside this script
 # approve and fetch the signed certificate
-kubectl certificate approve "${csrName}"
+# kubectl certificate approve "${csrName}"
 
 set +e
 # verify certificate has been signed

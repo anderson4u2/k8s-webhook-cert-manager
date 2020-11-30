@@ -1,5 +1,5 @@
 DOCKER_IMAGE_NAME ?= anderson4u2/k8s-webhook-cert-manager
-DOCKER_IMAGE_TAG ?= 0.0.1
+DOCKER_IMAGE_TAG ?= 0.0.2
 KUBECTL_VERSION ?= v1.18.12
 
 
